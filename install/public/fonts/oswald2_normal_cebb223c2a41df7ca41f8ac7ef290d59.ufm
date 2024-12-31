@@ -1,0 +1,33 @@
+StartFontMetrics 4.1
+Notice Converted by PHP-font-lib
+Comment https://github.com/PhenX/php-font-lib
+EncodingScheme FontSpecific
+Copyright Copyright 2016 The Oswald Project Authors (https://github.com/googlefonts/OswaldFont)
+FontName Oswald
+FontSubfamily Book
+UniqueID 4.100;newt;Oswald-Regular
+FullName Oswald Regular
+Version Version 4.100
+PostScriptName OswaldRegular
+Weight Medium
+ItalicAngle 0
+IsFixedPitch false
+UnderlineThickness 50
+UnderlinePosition -175
+FontHeightOffset 0
+Ascender 810
+Descender -8
+FontBBox 15 -8 629 810
+StartCharMetrics 386
+U 32 ; WX 229 ; N space ; G 3
+U 65 ; WX 492 ; N A ; G 4
+U 84 ; WX 413 ; N T ; G 5
+U 97 ; WX 426 ; N a ; G 6
+U 102 ; WX 287 ; N f ; G 7
+U 105 ; WX 229 ; N i ; G 8
+U 109 ; WX 680 ; N m ; G 9
+U 110 ; WX 439 ; N n ; G 10
+U 114 ; WX 321 ; N r ; G 11
+U 115 ; WX 374 ; N s ; G 12
+EndCharMetrics
+EndFontMetrics
