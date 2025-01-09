@@ -60,29 +60,31 @@ class ReportController extends Controller
             $stores = (new StoreRepository())->query()->where('id', $id)->get();
             $fileName = $stores[0]->name.'.xlsx';
         }
-
+    
         $storesCollection = collect([]);
         foreach ($stores as $store) {
             $productIds = $store->products()->pluck('id')->toArray();
             $total = \App\Models\OrderProduct::whereIn('id', $productIds)->get();
             $amount = $store->orders->sum('total_amount');
             $cancle = $store->orders->where('order_status', 'Cancelled')->count();
-
+        
             $collection = [
-                'name' => $store->name,
-                'commission' => $store->commission.'%',
-                'total_selling' => (string) $total->sum('quantity'),
-                'total_revenue' => (string) currencyPosition($store->orders->sum('total_amount')),
-                'commission_cost' => (string) currencyPosition(round(($amount / 100) * $store->commission, 2)),
-                'total_order' => (string) $store->orders->count(),
-                'total_cancle' => (string) $cancle,
-                'create_at' => $store->created_at->format('M d, Y'),
+                'SL.' => $store->id, // Adjust if necessary for sequence number
+                'Name' => $store->name,
+                'Commission' => $store->commission.'%',
+                'Total Selling' => (string) $total->sum('quantity'),
+                'Total Revenue' => (string) currencyPosition($store->orders->sum('total_amount')),
+                'Commission Cost' => (string) currencyPosition(round(($amount / 100) * $store->commission, 2)),
+                'Total Order' => (string) $store->orders->count(),
+                'Total Cancel Order' => (string) $cancle,
+                'Created At' => $store->created_at->format('M d, Y'),
             ];
             $storesCollection[] = $collection;
         }
-
+    
         return Excel::download(new StoreExport($storesCollection), $fileName);
     }
+
 
     public function details(Store $store)
     {
